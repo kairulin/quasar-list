@@ -50,36 +50,12 @@ export default {
   },
   setup() {
     const $q = useQuasar();
-    // const leftDrawerOpen = ref(false);
-    // const search = ref("");
-    // const message = ref("");
-    // const currentConversationIndex = ref(0);
-    // const currentConversation = computed(() => {
-    //   if(currentConversationIndex.value ===0){
-    //     return conversations[currentConversationIndex.value];
-    //   } else {
-    //     return conversations[currentConversationIndex.value+1];
-    //   }
-    // });
+
     const style = computed(() => ({
       height: $q.screen.height + "px",
     }));
-    // function toggleLeftDrawer() {
-    //   leftDrawerOpen.value = !leftDrawerOpen.value;
-    // }
-    // function setCurrentConversation(index) {
-    //   currentConversationIndex.value = index;
-    // }
-    return {
-    //   leftDrawerOpen,
-    //   search,
-    //   message,
-    //   currentConversationIndex,
-    //   conversations,
-    //   currentConversation,
-    //   setCurrentConversation,
+    return {  
       style,
-    //   toggleLeftDrawer,
     };
   },
 };
@@ -120,9 +96,4 @@ export default {
   .WAL
     &__drawer-open
       display: none
-// .conversation__summary
-//   margin-top: 4px
-// .conversation__more
-//   margin-top: 0!important
-//   font-size: 1.4rem
 </style>

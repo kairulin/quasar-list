@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf" class="bg-grey-1" >
+  <q-layout view="hHh LpR fFf">
     <q-header elevated class="bg-black text-white q-py-xs" height-hint="58">
       <q-toolbar>
         <q-btn
@@ -12,7 +12,6 @@
         />
 
         <q-btn flat no-caps no-wrap class="q-ml-xs" v-if="$q.screen.gt.xs">
-          <!-- <q-icon :name="fabYoutube" color="red" size="28px" /> -->
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
@@ -85,17 +84,18 @@
             <q-tooltip>Account</q-tooltip>
           </q-btn>
         </div>
-        <!-- <q-btn dense flat round icon="fas fa-chevron-down" @click="toggleRightDrawer" /> -->
+        <q-btn
+          dense
+          flat
+          round
+          icon="fas fa-chevron-down"
+          @click="toggleRightDrawer"
+        />
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      class="bg-grey-2"
-      :width="240"
-    >
+    <q-drawer v-model="leftDrawerOpen" side="left" bordered model-value:false>
+      <!-- drawer content -->
       <q-scroll-area class="fit">
         <q-list padding>
           <q-item
@@ -182,53 +182,99 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-page-container>
+    <q-drawer class="column reverse" show-if-above v-model="rightDrawerOpen" side="right" bordered  >
+      <!-- drawer content -->
+      <q-input
+      placeholder="傳送訊息"
+      outlined
+      rounded 
+      class="q-ma-md"
+      dense
+      >
+        <template v-slot:append>
+          <q-icon name="fas fa-play" />
+        </template>
+      </q-input>
+      
+      <q-separator class="q-my-md" />
+
+      <div class="q-pa-md row justify-center">
+        <div style="width: 100%; max-width: 400px">
+          <q-chat-message
+            name="me"
+            avatar="https://cdn.quasar.dev/img/avatar4.jpg"
+            :text="['hey, how are you?']"
+            sent
+            stamp="7 minutes ago"
+          />
+          <q-chat-message
+            name="Jane"
+            avatar="https://cdn.quasar.dev/img/avatar3.jpg"
+            :text="[`doing fine, how r you?`]"
+            stamp="4 minutes ago"
+          />
+        </div>
+      </div>
+    </q-drawer>
+
+    <q-page-container class="column content-center">
       <!-- <router-view /> -->
-      <!-- <div class="row q-col-gutter-sm">
-        <div class="col-4" v-for="n in 6" :key="`sm-${n}`">
-          <div class="my-content">
-            <img src="https://cdn.quasar.dev/img/mountains.jpg" style="width:500px">
-            <q-card-section>
-            <div class="text-h6">Card #{{ index }}</div>
-            <div class="text-subtitle2">by John Doe</div>
-          </q-card-section>
+      <div class="row items-center">
+        <div class="col-2 q-pl-xl">
+          <q-btn icon="fas fa-chevron-left" flat round />
+        </div>
+        <div class="col-8 q-pl-sm">
+          <div class="q-pa-md bg-white text-black">
+            <q-list
+              padding
+              bordered
+              class="rounded-borders"
+              style="max-width: 328px"
+            >
+              <q-expansion-item icon="perm_identity" label="Account settings">
+                <q-card class="bg-white">
+                  <q-card-section>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Quidem, eius reprehenderit eos corrupti commodi magni
+                    quaerat ex numquam, dolorum officiis modi facere maiores
+                    architecto suscipit iste eveniet doloribus ullam aliquid.
+                  </q-card-section>
+                </q-card>
+              </q-expansion-item>
+            </q-list>
           </div>
         </div>
-      </div> -->
-      <PageHome />
+      </div>
+
+      <div class="row content-center">
+        <q-img
+          src="https://placeimg.com/500/300/nature"
+          :ratio="1"
+          style="width: 500px"
+        />
+      </div>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { ref } from "vue";
-import { fabYoutube } from "@quasar/extras/fontawesome-v5";
-import PageHome from "../components/PageHome.vue";
 
 export default {
-  name: "MyLayout",
-  components: {
-    PageHome
-  },
-
   setup() {
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
-    const search = ref("");
 
-    function toggleLeftDrawer() {
-      leftDrawerOpen.value = !leftDrawerOpen.value;
-    }
-    function toggleRightDrawer() {
-      rightDrawerOpen.value = !rightDrawerOpen.value;
-    }
     return {
-      fabYoutube,
-      search,
       leftDrawerOpen,
-      toggleLeftDrawer,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+
       rightDrawerOpen,
-      toggleRightDrawer,
+      toggleRightDrawer() {
+        rightDrawerOpen.value = !rightDrawerOpen.value;
+      },
       links1: [
         { icon: "home", text: "首頁", to: "/" },
         { icon: "fas fa-portrait", text: "個人資料", to: "/about2/info2" },
@@ -276,30 +322,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass">
-.YL
-    &__toolbar-input-container
-        min-width: 100px
-        width: 55%
-    &__toolbar-input-btn
-        border-radius: 0
-        border-style: solid
-        border-width: 1px 1px 1px 0
-        border-color: rgba(0,0,0,.24)
-        max-width: 60px
-        width: 100%
-    &__drawer-footer-link
-        color: inherit
-        text-decoration: none
-        font-weight: 500
-        font-size: .75rem
-        &:hover
-            color: #000
-
-.my-content
-  margin: 10px
-  padding: 10px 15px
-  background: rgba(86,61,124,.15)
-  border: 1px solid rgba(86,61,124,.2)
-</style>
