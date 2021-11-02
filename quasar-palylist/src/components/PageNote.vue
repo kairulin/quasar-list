@@ -1,6 +1,7 @@
 <template>
   <q-page class="relative-position">
-    <q-scroll-area class="absolute fullscreen">
+    <q-scroll-area class="absolute fullscreen" style="
+    z-index: 0;">
       <h4 class="q-pl-xl">熱門筆記</h4>
       <div class="row justify-center q-gutter-sm">
         <q-intersection
@@ -168,4 +169,8 @@ export default {
         font-size: .75rem
         &:hover
             color: #000
+
+
+fullscreen
+  z-index:0
 </style>

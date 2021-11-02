@@ -1,4 +1,4 @@
-<template>
+<template >
   <q-page class="flex column justify-center items-center content-center">
     <div class="form bg-indigo-3 q-pa-md rounded-borders">
       <div class="row items-center">
@@ -49,6 +49,7 @@
             type="submit"
             color="primary"
             glossy
+            to="/header/login"
           />
         </div>
       </q-form>

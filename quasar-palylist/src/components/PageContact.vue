@@ -1,4 +1,4 @@
-<template>
+<template >
   <div class="bg-black text-white q-pa-md">
     <div class="column text-center" style="height: 95vh">
       <div class="subscription q-pa-md">聯絡我們</div>

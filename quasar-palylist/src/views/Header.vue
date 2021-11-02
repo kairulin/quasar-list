@@ -11,7 +11,7 @@
           icon="menu"
         />
 
-        <q-btn flat no-caps no-wrap class="q-ml-xs" v-if="$q.screen.gt.xs">
+        <q-btn flat no-caps no-wrap class="q-ml-xs" v-if="$q.screen.gt.xs" to="/">
           <!-- <q-icon :name="fabYoutube" color="red" size="28px" /> -->
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
@@ -78,7 +78,7 @@
             <q-badge color="red" text-color="white" floating> 2 </q-badge>
             <q-tooltip>Notifications</q-tooltip>
           </q-btn>
-          <q-btn round flat>
+          <q-btn round flat to="/header/info2">
             <q-avatar size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
             </q-avatar>
@@ -104,8 +104,10 @@
             v-ripple
             clickable
             :to="link.to"
+            header
+            exact
           >
-            <q-item-section avatar>
+            <q-item-section avatar >
               <q-icon color="grey" :name="link.icon" />
             </q-item-section>
             <q-item-section>
@@ -115,7 +117,7 @@
 
           <q-separator class="q-my-md" />
 
-          <q-item v-for="link in links2" :key="link.text" v-ripple clickable>
+          <q-item v-for="link in links2" :key="link.text" v-ripple clickable :to="link.to" >
             <q-item-section avatar>
               <q-icon color="grey" :name="link.icon" />
             </q-item-section>
@@ -132,7 +134,7 @@
             More from Youtube
           </q-item-label> -->
 
-          <q-item v-for="link in links3" :key="link.text" v-ripple clickable>
+          <q-item v-for="link in links3" :key="link.text" v-ripple clickable :to="link.to">
             <q-item-section avatar>
               <q-icon color="grey" :name="link.icon" />
             </q-item-section>
@@ -183,7 +185,7 @@
     </q-drawer>
 
     <q-page-container>
-      <!-- <router-view /> -->
+      <router-view />
       <!-- <div class="row q-col-gutter-sm">
         <div class="col-4" v-for="n in 6" :key="`sm-${n}`">
           <div class="my-content">
@@ -195,7 +197,7 @@
           </div>
         </div>
       </div> -->
-      <PageHome />
+      <!-- <PageNote /> -->
     </q-page-container>
   </q-layout>
 </template>
@@ -203,12 +205,12 @@
 <script>
 import { ref } from "vue";
 import { fabYoutube } from "@quasar/extras/fontawesome-v5";
-import PageHome from "../components/PageHome.vue";
+// import PageNote from "../components/PageNote.vue";
 
 export default {
   name: "MyLayout",
   components: {
-    PageHome
+    // PageNote
   },
 
   setup() {
@@ -230,21 +232,21 @@ export default {
       rightDrawerOpen,
       toggleRightDrawer,
       links1: [
-        { icon: "home", text: "首頁", to: "/" },
-        { icon: "fas fa-portrait", text: "個人資料", to: "/about2/info2" },
-        { icon: "fas fa-key", text: "變更密碼" },
+        { icon: "home", text: "首頁", to: "/header" },
+        { icon: "fas fa-portrait", text: "個人資料", to: "/header/info2" },
+        { icon: "fas fa-key", text: "變更密碼" ,to: "/header/change"},
       ],
       links2: [
         // { icon: 'folder', text: 'Library' },
-        { icon: "restore", text: "歷史" },
+        { icon: "restore", text: "歷史",to:"/header/history" },
         // { icon: 'watch_later', text: 'Watch later' },
-        { icon: "thumb_up_alt", text: "收藏" },
-        { icon: "fas fa-pen", text: "塗鴉" },
+        { icon: "thumb_up_alt", text: "收藏" ,to:"/header/like"},
+        { icon: "fas fa-pen", text: "塗鴉" ,to:"/header/paint"},
       ],
 
       links3: [
-        { icon: "fas fa-cloud-upload-alt", text: "上傳" },
-        { icon: "fas fa-magic", text: "許願" },
+        { icon: "fas fa-cloud-upload-alt", text: "上傳",to:"/header/update" },
+        { icon: "fas fa-magic", text: "許願",to:"/header/wish" },
 
         // { icon: fabYoutube, text: 'YouTube Premium' },
         // { icon: 'local_movies', text: 'Movies & Shows' },

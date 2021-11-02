@@ -1,4 +1,4 @@
-<template>
+<template >
   <q-img src="../assets/bgspace.jpg" >  
 
   <q-page class="flex column justify-center items-center content-center text-white">

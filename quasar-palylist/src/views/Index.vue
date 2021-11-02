@@ -1,6 +1,5 @@
-<template>
+<template v-slot:body-cell-name="props">
   <q-layout view="hHh lpR fFf">
-    
     <q-header reveal elevated class="bg-black text-white">
       <div class="q-pa-md">
         <q-toolbar class="bg-black text-white">
@@ -16,15 +15,43 @@
 
           <q-space />
 
-          <q-btn stretch flat label="首頁" />
+          <q-btn
+            type="a"
+            href="#a1"
+            stretch
+            flat
+            label="首頁"
+            @click="index"
+          />
 
-          <q-btn stretch flat label="關於Plearnet" />
+          <q-btn
+            type="a"
+            href="#a2"
+            stretch
+            flat
+            label="關於Plearnet"
+            @click="about"
+          />
 
-          <q-btn stretch flat label="訂閱計畫" />
+          <q-btn
+            type="a"
+            href="#a3"
+            stretch
+            flat
+            label="訂閱計畫"
+            @click="subscription"
+          />
 
-          <q-btn stretch flat label="聯絡我們" />
+          <q-btn
+            type="a"
+            href="#a4"
+            stretch
+            flat
+            label="聯絡我們"
+            @click="contact"
+          />
 
-          <q-btn to="/about2" stretch flat label="登入" />
+          <q-btn to="/header/login" stretch flat label="登入" />
         </q-toolbar>
       </div>
     </q-header>
@@ -47,8 +74,44 @@ export default {
   },
 
   setup() {
+    const index = () => {
+      // 获取DOM元素
+      let el = document.querySelector("a1");
+      // chrome
+      document.body.scrollTop = el;
+      // firefox
+      document.documentElement.scrollTop = el;
+    };
+    const about = () => {
+      // 获取DOM元素
+      let el = document.querySelector("a2");
+      // chrome
+      document.body.scrollTop = el;
+      // firefox
+      document.documentElement.scrollTop = el;
+    };
+    const subscription = () => {
+      // 获取DOM元素
+      let el = document.querySelector("a3");
+      // chrome
+      document.body.scrollTop = el;
+      // firefox
+      document.documentElement.scrollTop = el;
+    };
+    const contact = () => {
+      // 获取DOM元素
+      let el = document.querySelector("a4");
+      // chrome
+      document.body.scrollTop = el;
+      // firefox
+      document.documentElement.scrollTop = el;
+    };
     return {
       // leftDrawerOpen: ref(false)
+      index,
+      about,
+      subscription,
+      contact,
     };
   },
 };

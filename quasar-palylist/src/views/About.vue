@@ -106,7 +106,7 @@ const conversations = [
     person: "Razvan Stoenescu",
     avatar: "https://cdn.quasar.dev/team/razvan_stoenescu.jpeg",
     caption: "I'm working on Quasar!",
-    to: "/about/info",
+    to: "/header/info",
     sent: true,
   },
   {
@@ -114,7 +114,7 @@ const conversations = [
     person: "個人資訊",
     avatar: "fas fa-portrait",
     caption: "I'm working on Quasar!",
-    to: "/about/info",
+    to: "/header/info",
     sent: true,
   },
   {
@@ -122,7 +122,7 @@ const conversations = [
     person: "更改密碼",
     avatar: "fas fa-key",
     caption: "I'm working on Quasar!",
-    to: "/about/change",
+    to: "/header/change",
     sent: true,
   },
   {
@@ -130,7 +130,7 @@ const conversations = [
     person: "上傳",
     avatar: "fas fa-rocket",
     caption: "I'm working on Quasar!",
-    to: "/about/info",
+    to: "/header/info",
     sent: true,
   },
   {
@@ -138,7 +138,7 @@ const conversations = [
     person: "歷史",
     avatar: "fas fa-file-alt",
     caption: "I'm working on Quasar!",
-    to: "/about/info",
+    to: "/header/info",
     sent: true,
   },
   {
@@ -146,7 +146,7 @@ const conversations = [
     person: "收藏",
     avatar: "fas fa-star",
     caption: "I'm working on Quasar!",
-    to: "/about/info",
+    to: "/header/info",
     sent: true,
   },
   {
@@ -154,7 +154,7 @@ const conversations = [
     person: "塗鴉",
     avatar: "fas fa-pen",
     caption: "I'm working on Quasar!",
-    to: "/about/info",
+    to: "/header/info",
     sent: true,
   },
   {
@@ -162,7 +162,7 @@ const conversations = [
     person: "許願",
     avatar: "fas fa-magic",
     caption: "I'm working on Quasar!",
-    to: "/about/info",
+    to: "/header/info",
     sent: true,
   },
 ];
@@ -223,7 +223,7 @@ export default {
     background-color: #009688
   &__layout
     margin: 0 auto
-    z-index: 4000
+    // z-index: 4000
     height: 100%
     width: 90%
     max-width: 950px

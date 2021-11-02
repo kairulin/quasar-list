@@ -2,7 +2,7 @@
   <q-page class="flex column justify-center items-center content-center">
     <div
       class="bg-indigo-3 q-pa-md rounded-borders"
-      style="width: 252px; max-width: 400px"
+      style="width: 352px; max-width: 400px"
     >
       <div class="row items-center">
         <div class="col-4"><q-btn icon="fas fa-chevron-left" flat round /></div>
@@ -35,18 +35,15 @@
             type="submit"
             color="primary"
             glossy
+            to="/header"
           />
-          <q-btn flat style="color: #ff0080" size="xs" label="註冊帳號" />
+          <q-btn flat style="color: #ff0080" size="xs" label="註冊帳號" to="/header/register" />
         </div>
         <q-separator dark />
         <div>
-          <div class="row">
-            <div class="col q-mr-lg">
+          <div class="q-gutter-md fit row justify-center">
               <q-btn label="facebook" type="submit" color="primary" />
-            </div>
-            <div class="col q-ml-lg">
               <q-btn label="google" type="submit" color="deep-orange" />
-            </div>
           </div>
         </div>
       </q-form>

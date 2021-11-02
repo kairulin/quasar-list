@@ -23,5 +23,6 @@ export default {
 };
 </script>
 <style lang="sass">
-
+fullscreen
+  z-index: 0!important
 </style>

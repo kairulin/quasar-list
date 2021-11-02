@@ -1,39 +1,184 @@
 <template>
-  <div class="q-pa-xl position-relative bg-grey-4" :style="style">
-    <q-layout view="lHh Lpr lFf" class="WAL__layout shadow-3" container>
-          <div class="q-pa-xl ">
-        <div class="q-gutter-md">
-        <q-avatar size="100px">
+  <q-page class="relative-position">
+    <q-scroll-area class="absolute fullscreen" style="z-index: 0">
+      <div class="q-pa-xl bg-grey-4 relative-position" :style="style">
+        <q-layout view="lHh Lpr lFf" class="WAL__layout shadow-3" container>
+          <div class="q-pa-xl">
+            <div class="column items-center">
+              <q-item
+                clickable
+                v-ripple
+                class="column justify-center items-center content-center"
+                to="/header/changeinfo"
+              >
+                <q-item-section>
+                  <q-avatar size="100px">
+                    <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+                  </q-avatar>
+                </q-item-section>
+                <q-item-section class="text-caption"
+                  >編輯個人資料</q-item-section
+                >
+              </q-item>
+              <!-- <q-avatar size="100px">
             <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-        </q-avatar>
-    
+          </q-avatar> -->
 
-            <div class="full-width row items-center">
+              <!-- <div class="fit text-center row">
+                <div class="col">
+                  <q-btn
+                    flat
+                    size="22px"
+                    class="q-px-xl q-py-xs"
+                    label="筆記數"
+                  />
+                  <div class="text-subtitle1">100</div>
+                </div>
+                <div class="col">
+                  <q-btn
+                    flat
+                    size="22px"
+                    class="q-px-xl q-py-xs"
+                    label="積分"
+                  />
+                  <div class="text-subtitle1">150</div>
+                </div>
+                <div class="col">
+                  <q-btn
+                    flat
+                    size="22px"
+                    class="q-px-xl q-py-xs"
+                    label="粉絲人數"
+                  />
+                  <div class="text-subtitle1">41</div>
+                </div>
+              </div> -->
+
+              <div class="fit q-gutter-md">
+                <div class="full-width row items-center">
+                  <div class="col-2 text-left q-pr-lg">姓名</div>
+                  <div class="col-9">
+                    <!-- <q-input outlined v-model="text" dense /> -->
+                    <q-field outlined dense>
+                      <template v-slot:control>
+                        <div
+                          class="self-center full-width no-outline"
+                          tabindex="0"
+                        >
+                          測
+                        </div>
+                      </template>
+                    </q-field>
+                  </div>
+                </div>
+
+                <div class="full-width row items-center">
+                  <div class="col-2 text-left q-pr-lg">用戶名稱</div>
+                  <div class="col-9">
+                    <q-field outlined dense>
+                      <template v-slot:control>
+                        <div
+                          class="self-center full-width no-outline"
+                          tabindex="0"
+                        >
+                          測試
+                        </div>
+                      </template>
+                    </q-field>
+                  </div>
+                </div>
+
+                <div class="full-width row items-center">
+                  <div class="col-2 text-left q-pr-lg">電子郵件</div>
+                  <div class="col-9">
+                    <q-field outlined dense>
+                      <template v-slot:control>
+                        <div
+                          class="self-center full-width no-outline"
+                          tabindex="0"
+                        >
+                          test@test.com
+                        </div>
+                      </template>
+                    </q-field>
+                  </div>
+                </div>
+
+                <div class="full-width row items-center">
+                  <div class="col-2 text-left q-pr-lg">性別</div>
+                  <div class="col-9">
+                    <q-field outlined dense>
+                      <template v-slot:control>
+                        <div
+                          class="self-center full-width no-outline"
+                          tabindex="0"
+                        >
+                          未知
+                        </div>
+                      </template>
+                    </q-field>
+                  </div>
+                </div>
+
+                <div class="full-width row items-center">
+                  <div class="col-2 text-left q-pr-lg">註冊時間</div>
+                  <div class="col-9">
+                    <q-field outlined dense>
+                      <template v-slot:control>
+                        <div
+                          class="self-center full-width no-outline"
+                          tabindex="0"
+                        >
+                          2021/11/2
+                        </div>
+                      </template>
+                    </q-field>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+
+<div class="q-mt-sm">
+                  <q-btn color="primary" label="登出" />
+</div>
+
+              <!-- <div class="full-width row items-center">
             <div class="col-1 text-left q-pr-lg">姓名</div>
             <div class="col-9">
-                <q-input outlined v-model="text" dense />
+              <q-input outlined v-model="text" dense />
             </div>
-            </div>
+          </div>
 
-            <div class="full-width row items-center">
+          <div class="full-width row items-center">
             <div class="col-1 text-left q-pr-lg">用戶名稱</div>
             <div class="col-9">
-                <q-input outlined v-model="text" dense />
+              <q-input outlined v-model="text" dense />
             </div>
-            </div>
+          </div>
 
-            <div class="full-width row items-center">
+          <div class="full-width row items-center">
             <div class="col-1 text-left q-pr-lg">電子郵件</div>
             <div class="col-9">
-                <q-input outlined v-model="text" dense />
+              <q-input outlined v-model="text" dense />
             </div>
+          </div> -->
             </div>
-        </div>
-        </div>
+            <div class="fixed-bottom q-ma-md">
+              <q-separator size="5px" color="grey-2" />
 
-
-    </q-layout>
-  </div>
+              <div class="q-pt-md items-center row">
+                <q-icon name="place" label="123" size="50px" />
+                <div class="text-subtitle1">宜蘭市</div>
+              </div>
+            </div>
+          </div>
+        </q-layout>
+      </div>
+    </q-scroll-area>
+  </q-page>
 </template>
 <script>
 // import PageInfo from '../components/PageInfo.vue'
@@ -41,7 +186,6 @@
 import { useQuasar } from "quasar";
 import { computed } from "vue";
 // import { ref, computed } from "vue";
-
 
 export default {
   name: "WhatsappLayout",
@@ -54,7 +198,7 @@ export default {
     const style = computed(() => ({
       height: $q.screen.height + "px",
     }));
-    return {  
+    return {
       style,
     };
   },

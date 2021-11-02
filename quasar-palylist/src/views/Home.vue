@@ -1,8 +1,8 @@
 <template>
-  <HelloWorld />
-  <PageAbout />
-  <PageSubscription />
-  <PageContact />
+  <HelloWorld id="a1"/>
+  <PageAbout id="a2"/>
+  <PageSubscription id="a3"/>
+  <PageContact id="a4"/>
   <!-- <PageLogin /> -->
   <!-- <PageRegister /> -->
 </template>

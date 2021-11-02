@@ -192,7 +192,7 @@
       dense
       >
         <template v-slot:append>
-          <q-icon name="fas fa-play" />
+          <q-icon name="send" />
         </template>
       </q-input>
       
