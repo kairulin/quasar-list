@@ -115,7 +115,11 @@
 
           <q-separator class="q-my-md" />
 
-          <q-item v-for="link in links2" :key="link.text" v-ripple clickable>
+          <q-item v-for="link in links2" 
+          :key="link.text" 
+          v-ripple 
+          clickable
+          :to="link.to">
             <q-item-section avatar>
               <q-icon color="grey" :name="link.icon" />
             </q-item-section>
@@ -132,7 +136,12 @@
             More from Youtube
           </q-item-label> -->
 
-          <q-item v-for="link in links3" :key="link.text" v-ripple clickable>
+          <q-item v-for="link in links3" 
+          :key="link.text" 
+          v-ripple 
+          clickable
+            :to="link.to"
+           >
             <q-item-section avatar>
               <q-icon color="grey" :name="link.icon" />
             </q-item-section>
@@ -184,35 +193,57 @@
 
     <q-drawer class="column reverse" show-if-above v-model="rightDrawerOpen" side="right" bordered  >
       <!-- drawer content -->
-      <q-input
-      placeholder="傳送訊息"
-      outlined
-      rounded 
-      class="q-ma-md"
-      dense
-      >
-        <template v-slot:append>
-          <q-icon name="send" />
-        </template>
-      </q-input>
+      <!-- <q-form @submit="sendMessage">      -->
+        <q-input
+              v-model="state.newMessage"
+              placeholder="傳送訊息"
+              outlined
+              rounded 
+              class="q-ma-md"
+              dense>
+                <template v-slot:append>
+                  <q-btn
+                  round
+                  dense
+                  flat
+                  @click="sendMessage"
+                  color="black"
+                  icon="send" />
+                </template>
+              </q-input>
+      <!-- </q-form> -->
+     
       
       <q-separator class="q-my-md" />
 
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
-          <q-chat-message
-            name="me"
-            avatar="https://cdn.quasar.dev/img/avatar4.jpg"
-            :text="['hey, how are you?']"
-            sent
-            stamp="7 minutes ago"
-          />
-          <q-chat-message
-            name="Jane"
-            avatar="https://cdn.quasar.dev/img/avatar3.jpg"
-            :text="[`doing fine, how r you?`]"
-            stamp="4 minutes ago"
-          />
+          
+          <!-- <q-chat-message
+          v-for="message in messages"
+          :key="message.text"
+          :name="message.from"
+          :text="[message.text]"
+          :sent="message.from == 'me' ? true: false"
+          />         -->
+          <div 
+          v-for="message in state.messages" 
+          :key="message.text"          
+          class="q-message-container row items-end no-wrap"
+          >
+            <div class="">
+                <div  class="q-message-name q-message-name--received">
+                {{message.from}}
+                </div>           
+              <div v-if='message.from=="me"' class="q-message-text q-message-text--received">
+                <div class="q-message-text-content q-message-text-content--received">{{message.text}}</div>
+              </div>
+
+              <div v-else class="q-message-text q-message-text--received" style="color:#e0e0e0">
+                <div class="q-message-text-content q-message-text-content--received">{{message.text}}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </q-drawer>
@@ -243,9 +274,22 @@
               </q-expansion-item>
             </q-list>
           </div>
+        
+
         </div>
       </div>
+      <div class="row q-mb-sm">
+        <div class="q-mr-sm">
+          <q-btn  @click="like" flat round color="primary" icon="far fa-thumbs-up"/>
+          <label>{{state.like}}</label>
+        </div>
+        <div class="q-mr-sm">
+          <q-btn  @click="love" flat round color="primary" icon="fab fa-gratipay" />
+          <label>{{state.love}}</label>
+        </div>
+          <q-btn class="q-mr-sm" unelevated rounded size="md" color="primary" label="subscribe" />
 
+      </div>
       <div class="row content-center">
         <q-img
           src="https://placeimg.com/500/300/nature"
@@ -259,11 +303,52 @@
 
 <script>
 import { ref } from "vue";
+import { reactive } from "vue";
+// import axios from "axios";
 
 export default {
+
+ 
   setup() {
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
+
+    const state = reactive({
+      newMessage :"",
+      messages:[
+        {
+          text:'Hey Jim,how are you?',
+          from:'me'
+        },
+         {
+          text:'Good thanks, Danny! How are you?',
+          from:'them'
+        },
+         {
+          text:'Pretty good',
+          from:'me'
+        },
+      ],
+      like:0,
+      love:0,
+    })
+
+    function like(){
+      state.like+=1
+    }
+    function love(){
+      state.love+=1
+    }
+    function sendMessage(){
+      if(state.newMessage != "" ){
+          state.messages.push({
+            text:state.newMessage,
+            from:'me'
+          })
+          state.newMessage=""
+      }  
+    }
+   
 
     return {
       leftDrawerOpen,
@@ -276,49 +361,38 @@ export default {
         rightDrawerOpen.value = !rightDrawerOpen.value;
       },
       links1: [
-        { icon: "home", text: "首頁", to: "/" },
-        { icon: "fas fa-portrait", text: "個人資料", to: "/about2/info2" },
-        { icon: "fas fa-key", text: "變更密碼" },
+        { icon: "home", text: "首頁", to: "/header" },
+        { icon: "fas fa-portrait", text: "個人資料", to: "/header/info2" },
+        { icon: "fas fa-key", text: "變更密碼",to: "/header/change" },
       ],
       links2: [
         // { icon: 'folder', text: 'Library' },
-        { icon: "restore", text: "歷史" },
+        { icon: "restore", text: "歷史",to: "/header/history" },
         // { icon: 'watch_later', text: 'Watch later' },
-        { icon: "thumb_up_alt", text: "收藏" },
-        { icon: "fas fa-pen", text: "塗鴉" },
+        { icon: "thumb_up_alt", text: "收藏" ,to: "/header/like"},
+        { icon: "fas fa-pen", text: "塗鴉",to: "/header/paint" },
       ],
 
       links3: [
-        { icon: "fas fa-cloud-upload-alt", text: "上傳" },
-        { icon: "fas fa-magic", text: "許願" },
+        { icon: "fas fa-cloud-upload-alt", text: "上傳" ,to: "/header/update"},
+        { icon: "fas fa-magic", text: "許願",to: "/header/wish" },
 
         // { icon: fabYoutube, text: 'YouTube Premium' },
         // { icon: 'local_movies', text: 'Movies & Shows' },
         // { icon: 'videogame_asset', text: 'Gaming' },
         // { icon: 'live_tv', text: 'Live' }
       ],
-      //   links4: [
-      //     { icon: 'settings', text: 'Settings' },
-      //     { icon: 'flag', text: 'Report history' },
-      //     { icon: 'help', text: 'Help' },
-      //     { icon: 'feedback', text: 'Send feedback' }
-      //   ],
-      //   buttons1: [
-      //     { text: 'About' },
-      //     { text: 'Press' },
-      //     { text: 'Copyright' },
-      //     { text: 'Contact us' },
-      //     { text: 'Creators' },
-      //     { text: 'Advertise' },
-      //     { text: 'Developers' }
-      //   ],
-      //   buttons2: [
-      //     { text: 'Terms' },
-      //     { text: 'Privacy' },
-      //     { text: 'Policy & Safety' },
-      //     { text: 'Test new features' }
-      //   ]
+      state,      
+      sendMessage,
+      like,
+      love
     };
   },
 };
 </script>
+<style lang="sass">
+.q-chat-message
+  position:static
+  flex-direction:inherit
+
+</style>

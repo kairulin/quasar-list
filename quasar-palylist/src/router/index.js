@@ -15,8 +15,14 @@ import PageRegister from '../components/PageRegister.vue'
 import PagePaint from '../components/PagePaint.vue'
 
 
+import PageMenu1 from '../components/PageMenu1.vue'
+import PageMenu2 from '../components/PageMenu2.vue'
+import PageDecuss from '../components/PageDecuss.vue'
 
-import PageNote from '../components/PageNote.vue'
+
+// import PageNote from '../components/PageNote.vue'
+import PageNoteMore from '../components/PageNoteMore.vue'
+
 import PageHistory from '../components/PageHistory.vue'
 import PageLike from '../components/PageLike.vue'
 import PageUpdate from '../components/PageUpdate.vue'
@@ -67,7 +73,7 @@ const routes = [
     children: [
       {
         path: '',
-        component: PageNote,
+        component: PageMenu1,
       },
       {
         path: 'changeinfo',
@@ -113,6 +119,21 @@ const routes = [
         path: 'wish',
         component: PageWish,
       },
+      {
+        path: 'notemore',
+        component: PageNoteMore,
+      },
+      {
+        path:'menu1',
+        component:PageMenu1,
+      },
+      {
+        path:'menu2',
+        component:PageMenu2,
+      },{
+        path:'decuss',
+        component:PageDecuss,
+      }
     ]
   },
   {

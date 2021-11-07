@@ -10,7 +10,9 @@
               autocapitalize="off"
               autocomplete="off"
               spellcheck="true"
+              @submit="onSubmit"
             >
+            <q-select class="q-mb-sm" color="teal" filled v-model="model" :options="options" label="類別"/>
               <q-input
                 filled
                 v-model="name"
@@ -111,6 +113,11 @@
                   verdana: 'Verdana',
                 }"
               />
+              <div class="row">
+                <q-space />
+               <q-btn class="q-mt-sm" color="primary" label="送出" type="submit"/>
+
+              </div>
             </q-form>
           </div>
         </q-layout>
@@ -132,9 +139,9 @@ export default {
       height: $q.screen.height + "px",
     }));
     const editorStyle = computed(() => ({
-      height: $q.screen.height - 210 + "px",
+      height: $q.screen.height - 330 + "px",
     }));
-
+ 
     return {
       style,
       editorStyle,
@@ -142,6 +149,10 @@ export default {
         "<pre>Check out the two different types of dropdowns" +
           ' in each of the "Align" buttons.</pre> '
       ),
+       options: [
+        '學術', '非學術'
+      ],
+
     };
   },
 };

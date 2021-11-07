@@ -13,17 +13,20 @@
         >
           <div class="my-content">
             <q-card class="q-ma-sm">
-              <img src="https://cdn.quasar.dev/img/mountains.jpg" />
+              <img :src="notes[n-1].img" />
 
               <q-card-section>
-                <div class="text-h6">Card #{{ index }}</div>
-                <div class="text-subtitle2">by John Doe</div>
+                <div class="text-h6">Card #{{ notes[n-1].title }}</div>
+                <div class="text-subtitle2">{{notes[n-1].class }}</div>
               </q-card-section>
             </q-card>
           </div>
-        </q-intersection>
+        </q-intersection>        
       </div>
-
+      <div class="row q-mr-xl">
+        <q-space/>
+        <q-btn class="more" flat style="color: #FF0080" label="search more>>>" to="/header/notemore"/>
+      </div>
       <h4 class="q-pl-xl">學術類筆記</h4>
       <div class="row justify-center q-gutter-sm">
         <q-intersection
@@ -45,7 +48,10 @@
           </div>
         </q-intersection>
       </div>
-
+      <div class="row q-mr-xl">
+        <q-space/>
+        <q-btn class="more" flat style="color: #FF0080" label="search more>>>" />
+      </div>
       <h4 class="q-pl-xl">非學術類筆記</h4>
       <div class="row justify-center q-gutter-sm">
         <q-intersection
@@ -66,6 +72,10 @@
             </q-card>
           </div>
         </q-intersection>
+      </div>
+        <div class="row q-mr-xl">
+        <q-space/>
+        <q-btn class="more" flat style="color: #FF0080" label="search more>>>" />
       </div>
        </q-scroll-area>
   </q-page>
@@ -124,6 +134,15 @@ export default {
           // { icon: 'videogame_asset', text: 'Gaming' },
           // { icon: 'live_tv', text: 'Live' }
         ],
+        notes:[
+          {title:"番茄炒蛋1",img:"https://cdn.quasar.dev/img/mountains.jpg",class:"料理"},
+          {title:"番茄炒蛋2",img:"https://cdn.quasar.dev/img/mountains.jpg",class:"料理"},
+          {title:"番茄炒蛋3",img:"https://cdn.quasar.dev/img/mountains.jpg",class:"料理"},
+          {title:"番茄炒蛋4",img:"https://cdn.quasar.dev/img/mountains.jpg",class:"料理"},
+          {title:"番茄炒蛋5",img:"https://cdn.quasar.dev/img/mountains.jpg",class:"料理"},
+          {title:"番茄炒蛋6",img:"https://cdn.quasar.dev/img/mountains.jpg",class:"料理"},
+
+        ]
       //   links4: [
       //     { icon: 'settings', text: 'Settings' },
       //     { icon: 'flag', text: 'Report history' },
@@ -171,6 +190,6 @@ export default {
             color: #000
 
 
-fullscreen
-  z-index:0
+.more
+  margin-right:150px
 </style>

@@ -13,7 +13,10 @@
         </div>
         <div class="q-pr-xl">
           <div class="q-pr-lg">
-            <q-btn icon="add" flat color="white" text-color="black"  to="/header/editor"/>
+            <q-btn class="glossy q-mr-md" rounded color="indigo-14" label="新增" to="/header/editor"/>
+            <q-btn class="glossy" rounded color="deep-orange" label="刪除" />
+
+            <!-- <q-btn icon="add" flat color="white" text-color="black"  to="/header/editor"/> -->
           </div>
         </div>
       </div>
@@ -79,21 +82,21 @@ export default {
       rightDrawerOpen,
       toggleRightDrawer,
       links1: [
-        { icon: "home", text: "首頁", to: "/" },
-        { icon: "fas fa-portrait", text: "個人資料", to: "/about2/info2" },
-        { icon: "fas fa-key", text: "變更密碼" },
+        { icon: "home", text: "首頁", to: "/header" },
+        { icon: "fas fa-portrait", text: "個人資料", to: "/header/info2" },
+        { icon: "fas fa-key", text: "變更密碼",to: "/header/change" },
       ],
       links2: [
         // { icon: 'folder', text: 'Library' },
-        { icon: "restore", text: "歷史" },
+        { icon: "restore", text: "歷史",to: "/header/history" },
         // { icon: 'watch_later', text: 'Watch later' },
-        { icon: "thumb_up_alt", text: "收藏" },
-        { icon: "fas fa-pen", text: "塗鴉" },
+        { icon: "thumb_up_alt", text: "收藏" ,to: "/header/like"},
+        { icon: "fas fa-pen", text: "塗鴉",to: "/header/paint" },
       ],
 
       links3: [
-        { icon: "fas fa-cloud-upload-alt", text: "上傳" },
-        { icon: "fas fa-magic", text: "許願" },
+        { icon: "fas fa-cloud-upload-alt", text: "上傳",to: "/header/update" },
+        { icon: "fas fa-magic", text: "許願",to: "/header/wish" },
 
         // { icon: fabYoutube, text: 'YouTube Premium' },
         // { icon: 'local_movies', text: 'Movies & Shows' },
